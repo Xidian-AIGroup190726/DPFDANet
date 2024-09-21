@@ -13,9 +13,8 @@ class MyData(Dataset):
         self.cut_pan_ms_size = cut_size * 4
 
     def __getitem__(self, index):
-        # 同样用index裁剪I与HS
         x_ms, y_ms = self.gt_xy[index]
-        x_pan = int(4 * x_ms)  # 计算不可以在切片过程中进行
+        x_pan = int(4 * x_ms)  
         y_pan = int(4 * y_ms)
 
         image_ms = self.train_data1[:, x_ms:x_ms + self.cut_ms_size, y_ms:y_ms + self.cut_ms_size]
